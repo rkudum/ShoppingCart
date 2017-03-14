@@ -62,4 +62,37 @@ public class ShoppingCartTest {
         assertEquals(shoppingCartObj.checkout(items),new BigDecimal(2.05).setScale(2,BigDecimal.ROUND_HALF_UP));
     }
 
+    @Test
+    public void testCheckoutWithOffersforApple(){
+        List<String> items = new ArrayList<>();
+        items.add("Apple");
+        items.add("Apple");
+        items.add("Orange");
+        items.add("Apple");
+        assertEquals(shoppingCartObj.checkoutWithOffers(items),new BigDecimal(1.45).setScale(2,BigDecimal.ROUND_HALF_UP));
+    }
+
+
+    @Test
+    public void testCheckoutWithOffersforOranges(){
+        List<String> items = new ArrayList<>();
+        items.add("Orange");
+        items.add("Orange");
+        items.add("Orange");
+        assertEquals(shoppingCartObj.checkoutWithOffers(items),new BigDecimal(0.50).setScale(2,BigDecimal.ROUND_HALF_UP));
+    }
+    @Test
+    public void testCheckoutWithOffersforOrangesandApples(){
+        List<String> items = new ArrayList<>();
+        items.add("Orange");
+        items.add("Orange");
+        items.add("Orange");
+        items.add("Apple");
+        items.add("Apple");
+        assertEquals(shoppingCartObj.checkoutWithOffers(items),new BigDecimal(1.10).setScale(2,BigDecimal.ROUND_HALF_UP));
+    }
+
+
+
+
 }

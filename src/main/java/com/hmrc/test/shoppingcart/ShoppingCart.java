@@ -13,4 +13,14 @@ public class ShoppingCart {
         long numberOfOranges = items.stream().filter(s ->s.equalsIgnoreCase(Products.ORANGE.name())).count();
         return new BigDecimal((numberOfApples*Products.APPLE.getPrice())+(numberOfOranges*Products.ORANGE.getPrice())).setScale(2,BigDecimal.ROUND_HALF_UP);
     }
+
+    public BigDecimal checkoutWithOffers(List<String> items) {
+        long numberOfApples = items.stream().filter(s ->s.equalsIgnoreCase(Products.APPLE.name())).count();
+        long numberOfOranges = items.stream().filter(s ->s.equalsIgnoreCase(Products.ORANGE.name())).count();
+        numberOfApples = Products.APPLE.apply(numberOfApples);
+        numberOfOranges = Products.APPLE.apply(numberOfOranges);
+        return new BigDecimal((numberOfApples*Products.APPLE.getPrice())+(numberOfOranges*Products.ORANGE.getPrice())).setScale(2,BigDecimal.ROUND_HALF_UP);
+    }
+
+
 }
