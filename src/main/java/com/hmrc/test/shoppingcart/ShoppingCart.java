@@ -9,8 +9,8 @@ import java.util.List;
 public class ShoppingCart {
 
     public BigDecimal checkout(List<String> items) {
-        long numberOfApples = items.stream().filter(s ->s.equals("Apple")).count();
-        long numberOfOranges = items.stream().filter(s ->s.equals("Orange")).count();
-        return new BigDecimal((numberOfApples*0.60)+(numberOfOranges*0.25)).setScale(2,BigDecimal.ROUND_HALF_UP);
+        long numberOfApples = items.stream().filter(s ->s.equalsIgnoreCase(Products.APPLE.name())).count();
+        long numberOfOranges = items.stream().filter(s ->s.equalsIgnoreCase(Products.ORANGE.name())).count();
+        return new BigDecimal((numberOfApples*Products.APPLE.getPrice())+(numberOfOranges*Products.ORANGE.getPrice())).setScale(2,BigDecimal.ROUND_HALF_UP);
     }
 }
